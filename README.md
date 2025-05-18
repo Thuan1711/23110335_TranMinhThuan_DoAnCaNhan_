@@ -9,23 +9,36 @@ Qua đó có cái nhìn toàn diện hơn về cách các thuật toán AI hoạ
 2.1. Tổng quan về bài toán tìm kiếm và giải pháp
 Bài toán 8-Puzzle là một trò chơi giải đố trên một bảng 3x3 với 8 ô được đánh số từ 1 đến 8 và một ô trống (ký hiệu là 0). Mục tiêu là di chuyển các ô sao cho đạt được trạng thái đích – thường là dãy số theo thứ tự từ trái sang phải, từ trên xuống dưới, với ô trống ở góc dưới bên phải:
     1 2 3
+ 	
     4 5 6
+ 	
     7 8 0
 Đặc điểm của bài toán:
   •	Có không gian trạng thái lớn: có 9! = 362,880 cấu hình khác nhau, trong đó chỉ khoảng một nửa là giải được
+ 	
   •	Là bài toán tổ hợp: chỉ cần thay đổi vị trí là trạng thái hoàn toàn khác nhau.
+  
   •	Chi phí các bước bằng nhau: mỗi thao tác di chuyển (lên/xuống/trái/phải) có chi phí bằng nhau.
+  
   •	Có thể giải bằng nhiều chiến lược tìm kiếm: từ đơn giản (BFS/DFS) đến phức tạp (A*, học tăng cường,…).
+  
 Các loại thuật toán áp dụng:
   •	Tìm kiếm không có thông tin (Uninformed Search): không sử dụng tri thức bổ sung về bài toán. Ví dụ: BFS, DFS, UCS, IDDFS.
+  
   •	Tìm kiếm có thông tin (Informed Search): sử dụng hàm heuristic để định hướng tìm kiếm. Ví dụ: A*, Greedy, IDA*.
+  
   •	Tìm kiếm cục bộ (Local Search): không mở rộng toàn bộ không gian trạng thái, tập trung cải thiện lời giải hiện tại. Ví dụ: Hill Climbing, Simulated Annealing.
+  
   •	Tìm kiếm trong môi trường không xác định hoặc có ràng buộc: như Conformant BFS (Belief State), CSP (Backtracking, Forward Checking), học tăng cường (Q-Learning).
+  
 Việc chọn thuật toán phụ thuộc vào:
   •	Mức độ phức tạp của bài toán
+  
   •	Khả năng tính toán
+  
   •	Yêu cầu về thời gian, tối ưu hoặc tính đầy đủ
 Thông qua việc triển khai và đánh giá các thuật toán này, có thể hiểu rõ hơn về cách chúng hoạt động và phù hợp với loại bài toán nào.
+
 2.2. Các thuật toán tìm kiếm không có thông tin
 2.2.1. Các thuật toán triển khai trong nhóm
  	Nhóm thuật toán tìm kiếm không có thông tin (uninformed search) là những phương pháp không sử dụng thêm gì về trạng thái đích ngoài thông tin có sẵn từ không gian trạng thái. Trong đồ án này, các thuật toán sau đã được triển khai gồm:
