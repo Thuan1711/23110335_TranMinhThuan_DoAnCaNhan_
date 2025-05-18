@@ -94,12 +94,15 @@ Minh họa dưới đây thể hiện cách các thuật toán Greedy, A*, IDA* 
 -Greedy
 
 ![GREEDY](https://github.com/user-attachments/assets/f8778117-78bb-4c91-bde3-e59e68e57af3)
+
 -A*
 
 ![A_star](https://github.com/user-attachments/assets/04f8da2b-bfc9-43ad-8bd7-fecd90c55001)
+
 -IDA*
 
 ![IDA_star](https://github.com/user-attachments/assets/5c4e0f56-5f71-4c25-b59d-f15fe1811185)
+
 
 2.3.4 Một vài nhận xét về hiệu suất
 
