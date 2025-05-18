@@ -48,12 +48,16 @@ Thông qua việc triển khai và đánh giá các thuật toán này, có th�
 2.2.2. Hình ảnh GIF minh họa hành động
 Các hình ảnh dưới đây minh họa quá trình hoạt động của các thuật toán không có thông tin khi giải 8-Puzzle từ một trạng thái ban đầu về trạng thái đích:
 -BFS:
+
 ![BFS](https://github.com/user-attachments/assets/e2c07a10-543a-4476-88db-6dee63249e2f)
 - DFS
+  
   ![DFS](https://github.com/user-attachments/assets/4a68c094-9582-49e4-b84f-bd8615be8338)
 - UCS
+  
  ![UCS](https://github.com/user-attachments/assets/9393d4be-0d81-4344-908c-90f495908b7c)
 - IDDFS
+  
 ![IDDFS](https://github.com/user-attachments/assets/dc8ef2a3-7739-4aa1-a311-d33f8515106b)
 2.2.3. Một vài nhận xét về hiệu suất
 ![image](https://github.com/user-attachments/assets/98fa7b22-103e-40b9-b1fd-312004e2e0aa)
