@@ -47,6 +47,7 @@ Thông qua việc triển khai và đánh giá các thuật toán này, có th�
 •	Đảm bảo tìm thấy lời giải tối ưu nhưng tốn thời gian do lặp lại.
 2.2.2. Hình ảnh GIF minh họa hành động
 Các hình ảnh dưới đây minh họa quá trình hoạt động của các thuật toán không có thông tin khi giải 8-Puzzle từ một trạng thái ban đầu về trạng thái đích:
+
 -BFS:
 
 ![BFS](https://github.com/user-attachments/assets/e2c07a10-543a-4476-88db-6dee63249e2f)
@@ -59,7 +60,9 @@ Các hình ảnh dưới đây minh họa quá trình hoạt động của các 
 - IDDFS
   
 ![IDDFS](https://github.com/user-attachments/assets/dc8ef2a3-7739-4aa1-a311-d33f8515106b)
+
 2.2.3. Một vài nhận xét về hiệu suất
+
 ![image](https://github.com/user-attachments/assets/98fa7b22-103e-40b9-b1fd-312004e2e0aa)
 •	BFS thích hợp khi cần lời giải ngắn nhất nhưng tốn bộ nhớ lớn.
 •	DFS nhanh nhưng dễ bị kẹt nếu không giới hạn độ sâu.
@@ -87,13 +90,19 @@ f(n) = g(n) + h(n)
 •	Giảm chi phí bộ nhớ so với A*, tuy nhiên có thể chậm hơn.
 2.3.3. Hình ảnh GIF minh họa hoạt động
 Minh họa dưới đây thể hiện cách các thuật toán Greedy, A*, IDA* tiếp cận và giải quyết bài toán dựa trên heuristic:
+
 -Greedy
+
 ![GREEDY](https://github.com/user-attachments/assets/f8778117-78bb-4c91-bde3-e59e68e57af3)
 -A*
+
 ![A_star](https://github.com/user-attachments/assets/04f8da2b-bfc9-43ad-8bd7-fecd90c55001)
 -IDA*
+
 ![IDA_star](https://github.com/user-attachments/assets/5c4e0f56-5f71-4c25-b59d-f15fe1811185)
+
 2.3.4 Một vài nhận xét về hiệu suất
+
   ![image](https://github.com/user-attachments/assets/9cdff3c7-2df5-4562-833c-d3a72f996eee)
 •	Greedy phù hợp khi cần giải nhanh nhưng không yêu cầu tối ưu.
 •	A* là lựa chọn phổ biến nhất cho 8-Puzzle nếu bộ nhớ không bị giới hạn.
@@ -120,17 +129,26 @@ Trong bài toán 8-Puzzle, các thuật toán tìm kiếm cục bộ giúp thử
 •	Kết hợp giữa BFS và tìm kiếm cục bộ.
 2.4.3. Hình ảnh GIF minh họa hoạt động
 Các hình ảnh minh họa dưới đây cho thấy quá trình cải thiện lời giải của các thuật toán tìm kiếm cục bộ:
+
 -Hill:
+
 • simple
+
   ![Hill](https://github.com/user-attachments/assets/2af40e20-bc9f-45c4-a7b7-b93e5a2eee42)
 • steepest accent
+
 ![Stp_Hill](https://github.com/user-attachments/assets/19c192cd-1468-4372-a2d8-9b6042617a63)
 • stochastic
+
 ![Sto](https://github.com/user-attachments/assets/fc8497b5-5305-4008-a9b6-58a1428ef2f7)
 - Simulated Anealing
+  
 - Beam search
+  
   ![beamsearch](https://github.com/user-attachments/assets/dff158a6-b474-499b-8ade-63575ff27ff3)
+  
 2.4.4. Một vài nhận xét về hiệu suất
+  
   ![image](https://github.com/user-attachments/assets/c1ea0673-0f9e-449c-9ab9-9485d73a9186)
 •	Nhóm thuật toán này không đảm bảo tìm ra lời giải, nhưng nhanh và nhẹ.
 •	Simulated Annealing thường có hiệu suất tốt hơn Hill Climbing.
