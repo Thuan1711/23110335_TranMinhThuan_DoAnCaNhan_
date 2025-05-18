@@ -14,6 +14,7 @@ Bài toán 8-Puzzle là một trò chơi giải đố trên một bảng 3x3 v�
     4 5 6
  	
     7 8 0
+ 	
 Đặc điểm của bài toán:
 
   •	Có không gian trạng thái lớn: có 9! = 362,880 cấu hình khác nhau, trong đó chỉ khoảng một nửa là giải được
@@ -102,30 +103,55 @@ Các hình ảnh dưới đây minh họa quá trình hoạt động của các 
 ![image](https://github.com/user-attachments/assets/98fa7b22-103e-40b9-b1fd-312004e2e0aa)
 
 •	BFS thích hợp khi cần lời giải ngắn nhất nhưng tốn bộ nhớ lớn.
+
 •	DFS nhanh nhưng dễ bị kẹt nếu không giới hạn độ sâu.
+
 •	UCS phù hợp khi các bước có chi phí khác nhau (mặc dù trong 8-puzzle thường bằng nhau).
+
 •	IDDFS là lựa chọn cân bằng, tuy nhiên hiệu năng không cao nếu độ sâu lớn.
+
 2.3. Các thuật toán tìm kiếm có thông tin
+
 2.3.1. Cách tiếp cận bài toán và vai trò của Heuristic
+
 Các thuật toán tìm kiếm có thông tin (Informed Search) sử dụng heuristic – hàm đánh giá – để ước lượng khoảng cách từ trạng thái hiện tại đến trạng thái đích. Điều này giúp hạn chế không gian tìm kiếm, tăng tốc độ giải quyết bài toán so với các thuật toán không có thông tin.
+
 Trong bài toán 8-Puzzle, hai hàm heuristic phổ biến đã được áp dụng là:
+
 •	Manhattan Distance: Tổng khoảng cách theo chiều ngang và dọc từ vị trí hiện tại của từng ô đến vị trí đích.
+
 •	Tiles Out of Place: Đếm số ô đang nằm sai vị trí.
+
 Nếu Heuristic càng tốt thì thuật toán càng định hướng chính xác, giảm số bước tìm kiếm.
+
 2.3.2. Các thuật toán triển khai trong nhóm
+
 ● Greedy Best-First Search
+
 •	Luôn chọn trạng thái có giá trị heuristic thấp nhất.
+
 •	Không đảm bảo lời giải tối ưu.
+
 •	Có thể đi lạc nếu heuristic không tốt.
+
 ● A* Search
+
 •	Kết hợp chi phí từ gốc đến hiện tại (g(n)) và heuristic (h(n)):
+
 f(n) = g(n) + h(n)
+
 •	Đảm bảo tìm lời giải tối ưu nếu heuristic là admissible (không đánh giá quá thấp).
+
 •	Thường cho kết quả tốt và hiệu quả hơn BFS/UCS.
+
 ● Iterative Deepening A* (IDA*)
+
 •	Áp dụng phương pháp lặp với ngưỡng dựa trên f(n).
+
 •	Giảm chi phí bộ nhớ so với A*, tuy nhiên có thể chậm hơn.
+
 2.3.3. Hình ảnh GIF minh họa hoạt động
+
 Minh họa dưới đây thể hiện cách các thuật toán Greedy, A*, IDA* tiếp cận và giải quyết bài toán dựa trên heuristic:
 
 -Greedy
@@ -145,29 +171,52 @@ Minh họa dưới đây thể hiện cách các thuật toán Greedy, A*, IDA* 
   ![image](https://github.com/user-attachments/assets/9cdff3c7-2df5-4562-833c-d3a72f996eee)
   
 •	Greedy phù hợp khi cần giải nhanh nhưng không yêu cầu tối ưu.
+
 •	A* là lựa chọn phổ biến nhất cho 8-Puzzle nếu bộ nhớ không bị giới hạn.
+
 •	IDA* là phiên bản tiết kiệm bộ nhớ của A*, tuy nhiên chậm hơn do phải lặp lại.
+
 2.4. Các thuật toán Tìm kiếm cục bộ (Local Search)
+
 2.4.1. Cách tiếp cận bài toán
+
 Tìm kiếm cục bộ (Local Search) là phương pháp không cố gắng xây dựng toàn bộ đường đi từ trạng thái ban đầu đến trạng thái đích. Thay vào đó, nó tìm cách cải thiện lời giải hiện tại thông qua các bước nhỏ và chỉ giữ một số lượng rất hạn chế các trạng thái trong bộ nhớ.
+
 Đây là phương pháp rất phù hợp với không gian trạng thái lớn hoặc bài toán tối ưu hóa, nơi chi phí lưu trữ và duyệt toàn bộ cây tìm kiếm là không khả thi.
 Trong bài toán 8-Puzzle, các thuật toán tìm kiếm cục bộ giúp thử nghiệm khả năng giải mà không cần duyệt toàn bộ không gian trạng thái, tuy nhiên không đảm bảo tìm được lời giải tối ưu.
+
 2.4.2. Các thuật toán triển khai trong nhóm
+
 ● Hill Climbing (Simple, Steepest Ascent, Stochastic)
+
 •	Simple: chọn trạng thái kề tốt hơn đầu tiên.
+
 •	Steepest Ascent: chọn trạng thái kề có heuristic tốt nhất.
+
 •	Stochastic: chọn ngẫu nhiên trong các trạng thái tốt hơn hiện tại.
+
 •	Ưu điểm: đơn giản, ít tốn bộ nhớ.
+
 •	Nhược điểm: dễ mắc kẹt tại cực trị địa phương (local minima), plateau.
+
 ● Simulated Annealing
+
 •	Cho phép "leo xuống" (nhận lời giải xấu hơn tạm thời) với xác suất giảm dần theo thời gian.
+
 •	Dựa trên mô hình vật lý làm nguội kim loại.
+
 •	Giúp thoát khỏi local minima hiệu quả hơn Hill Climbing.
+
 ● Beam Search
+
 •	Duyệt song song nhiều trạng thái nhưng giới hạn theo số lượng (beam width).
+
 •	Giữ lại các trạng thái tốt nhất ở mỗi cấp độ.
+
 •	Kết hợp giữa BFS và tìm kiếm cục bộ.
+
 2.4.3. Hình ảnh GIF minh họa hoạt động
+
 Các hình ảnh minh họa dưới đây cho thấy quá trình cải thiện lời giải của các thuật toán tìm kiếm cục bộ:
 
 -Hill:
@@ -194,19 +243,32 @@ Các hình ảnh minh họa dưới đây cho thấy quá trình cải thiện l
   ![image](https://github.com/user-attachments/assets/c1ea0673-0f9e-449c-9ab9-9485d73a9186)
   
 •	Nhóm thuật toán này không đảm bảo tìm ra lời giải, nhưng nhanh và nhẹ.
+
 •	Simulated Annealing thường có hiệu suất tốt hơn Hill Climbing.
-•	Beam Search là giải pháp cân bằng, nhưng chất lượng phụ thuộc vào tham số beam width.
+
+•	Beam Search là giải pháp cân bằng, nhưng chất lượng phụ thuộc vào tham số beam width
+
 2.5. Các thuật toán Tìm kiếm trong môi trường phức tạp
+
 2.5.1. Đặc điểm bài toán và cách tiếp cận
+
 Trong môi trường thực tế, thông tin về trạng thái ban đầu có thể không chính xác hoặc không đầy đủ. Khi đó, bài toán tìm kiếm trở nên phức tạp hơn vì thuật toán không biết chính xác mình đang ở đâu – đây gọi là môi trường không xác định (non-deterministic).
+
 Để mô phỏng điều này, đồ án đã triển khai chế độ Belief State, nơi trạng thái ban đầu không phải là một mà là một tập hợp các trạng thái khả dĩ. Mục tiêu là tìm một chuỗi hành động sao cho tất cả các trạng thái ban đầu khả dĩ đều dẫn đến trạng thái đích.
+
 Đây là một dạng bài toán đặc biệt gọi là Conformant Planning – lập kế hoạch khi không chắc chắn hoàn toàn về trạng thái khởi đầu.
 2.5.2. Các thuật toán triển khai trong nhóm
+
 ● Conformant Breadth-First Search (Conformant BFS)
+
 •	Thuật toán mở rộng các tập hợp trạng thái (belief states) thay vì một trạng thái duy nhất.
+
 •	Chỉ thực hiện những hành động có thể áp dụng cho mọi trạng thái trong belief state.
+
 •	Dừng khi tất cả các trạng thái trong belief state đều đạt trạng thái đích.
+
 2.5.3. Hình ảnh GIF minh họa hoạt động
+
 Minh họa dưới đây mô phỏng quá trình tìm lời giải khi trạng thái ban đầu không xác định hoàn toàn:
 
 ![Con_BFS](https://github.com/user-attachments/assets/1edc1956-69e4-4ea5-8c23-6a4788c8b46f)
@@ -216,17 +278,29 @@ Minh họa dưới đây mô phỏng quá trình tìm lời giải khi trạng t
 ![image](https://github.com/user-attachments/assets/9a3eeb9f-b469-4f40-a721-00d0c7a4b1e6)
 
 •	Ưu điểm: tìm được lời giải chắc chắn trong môi trường không xác định.
+
 •	Nhược điểm: chi phí tính toán cao vì phải duyệt tập hợp các trạng thái ở mỗi bước.
+
 •	Thực tế chỉ áp dụng cho bài toán nhỏ (như 8-puzzle) do tính phức tạp theo cấp số nhân.
+
 2.6. Các thuật toán Tìm kiếm trong môi trường có ràng buộc (Constraint Satisfaction Problems - CSPs)
+
 2.6.1. Mô hình hóa 8-Puzzle như một CSP và cách tiếp cận của các thuật toán
+
 Mặc dù 8-Puzzle thường được tiếp cận như một bài toán tìm đường trong không gian trạng thái, ta cũng có thể mô hình nó như một bài toán thỏa mãn ràng buộc (CSP), trong đó:
+
 •	Biến (Variables): mỗi vị trí trên bảng (ô) là một biến.
+
 •	Miền giá trị (Domain): các giá trị có thể gán cho biến là số từ 0 đến 8.
+
 •	Ràng buộc (Constraints):
+
 o	Mỗi số từ 0 đến 8 chỉ xuất hiện một lần.
+
 o	Trạng thái đích phải đạt được thông qua chuỗi các trạng thái hợp lệ.
+
 Mặc dù CSP không phải là cách tiếp cận phổ biến nhất cho 8-Puzzle, việc áp dụng các kỹ thuật CSP cho thấy khả năng sử dụng được nhiều mô hình giải quyết vấn đề khác nhau trong AI.
+
 2.6.2. Các thuật toán/kỹ thuật triển khai trong nhóm
 ● Backtracking
 •	Duyệt từng bước, thử gán giá trị cho từng biến.
