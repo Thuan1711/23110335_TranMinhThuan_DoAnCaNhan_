@@ -64,6 +64,7 @@ Các hình ảnh dưới đây minh họa quá trình hoạt động của các 
 2.2.3. Một vài nhận xét về hiệu suất
 
 ![image](https://github.com/user-attachments/assets/98fa7b22-103e-40b9-b1fd-312004e2e0aa)
+
 •	BFS thích hợp khi cần lời giải ngắn nhất nhưng tốn bộ nhớ lớn.
 •	DFS nhanh nhưng dễ bị kẹt nếu không giới hạn độ sâu.
 •	UCS phù hợp khi các bước có chi phí khác nhau (mặc dù trong 8-puzzle thường bằng nhau).
@@ -103,10 +104,10 @@ Minh họa dưới đây thể hiện cách các thuật toán Greedy, A*, IDA* 
 
 ![IDA_star](https://github.com/user-attachments/assets/5c4e0f56-5f71-4c25-b59d-f15fe1811185)
 
-
 2.3.4 Một vài nhận xét về hiệu suất
 
   ![image](https://github.com/user-attachments/assets/9cdff3c7-2df5-4562-833c-d3a72f996eee)
+  
 •	Greedy phù hợp khi cần giải nhanh nhưng không yêu cầu tối ưu.
 •	A* là lựa chọn phổ biến nhất cho 8-Puzzle nếu bộ nhớ không bị giới hạn.
 •	IDA* là phiên bản tiết kiệm bộ nhớ của A*, tuy nhiên chậm hơn do phải lặp lại.
@@ -136,14 +137,16 @@ Các hình ảnh minh họa dưới đây cho thấy quá trình cải thiện l
 -Hill:
 
 • simple
-
   ![Hill](https://github.com/user-attachments/assets/2af40e20-bc9f-45c4-a7b7-b93e5a2eee42)
+  
 • steepest accent
 
 ![Stp_Hill](https://github.com/user-attachments/assets/19c192cd-1468-4372-a2d8-9b6042617a63)
+
 • stochastic
 
 ![Sto](https://github.com/user-attachments/assets/fc8497b5-5305-4008-a9b6-58a1428ef2f7)
+
 - Simulated Anealing
   
 - Beam search
@@ -153,6 +156,7 @@ Các hình ảnh minh họa dưới đây cho thấy quá trình cải thiện l
 2.4.4. Một vài nhận xét về hiệu suất
   
   ![image](https://github.com/user-attachments/assets/c1ea0673-0f9e-449c-9ab9-9485d73a9186)
+  
 •	Nhóm thuật toán này không đảm bảo tìm ra lời giải, nhưng nhanh và nhẹ.
 •	Simulated Annealing thường có hiệu suất tốt hơn Hill Climbing.
 •	Beam Search là giải pháp cân bằng, nhưng chất lượng phụ thuộc vào tham số beam width.
@@ -168,9 +172,13 @@ Trong môi trường thực tế, thông tin về trạng thái ban đầu có t
 •	Dừng khi tất cả các trạng thái trong belief state đều đạt trạng thái đích.
 2.5.3. Hình ảnh GIF minh họa hoạt động
 Minh họa dưới đây mô phỏng quá trình tìm lời giải khi trạng thái ban đầu không xác định hoàn toàn:
+
 ![Con_BFS](https://github.com/user-attachments/assets/1edc1956-69e4-4ea5-8c23-6a4788c8b46f)
+
 2.5.4. Một vài nhận xét về hiệu suất
+
 ![image](https://github.com/user-attachments/assets/9a3eeb9f-b469-4f40-a721-00d0c7a4b1e6)
+
 •	Ưu điểm: tìm được lời giải chắc chắn trong môi trường không xác định.
 •	Nhược điểm: chi phí tính toán cao vì phải duyệt tập hợp các trạng thái ở mỗi bước.
 •	Thực tế chỉ áp dụng cho bài toán nhỏ (như 8-puzzle) do tính phức tạp theo cấp số nhân.
@@ -195,11 +203,17 @@ Mặc dù CSP không phải là cách tiếp cận phổ biến nhất cho 8-Puz
 2.6.3. Hình ảnh GIF minh họa hoạt động
 Các hình ảnh minh họa dưới đây thể hiện quá trình tìm lời giải dựa trên ràng buộc và kiểm tra trước:
 - Backtracking
+  
   ![backtraking](https://github.com/user-attachments/assets/bc1569bf-7a62-4eeb-abd9-7fb4a780403f)
+  
 - Forwardchecking
+  
   ![Forward_check](https://github.com/user-attachments/assets/30d3deb6-39dc-4f8e-9704-a45152abf927)
+  
 2.6.4. Một vài nhận xét về hiệu suất
+
   ![image](https://github.com/user-attachments/assets/260d97df-746a-4bbf-abff-13a768648fd5)
+  
 •	Backtracking có thể dùng như baseline để kiểm tra tính hợp lệ của trạng thái.
 •	Forward Checking hoạt động tốt hơn khi kết hợp với các heuristic chọn biến/thứ tự giá trị.
 2.7. Học tăng cường (Reinforcement Learning)
@@ -227,9 +241,13 @@ o	s′,a′s', a's′,a′: trạng thái và hành động tiếp theo
 2.7.3. Hình ảnh GIF hoạt động
 Hình ảnh bên dưới minh họa quá trình Q-Learning học dần cách giải bài toán 8-Puzzle qua nhiều lượt chơi:
 - Q_learning
+  
 ![Q_learning](https://github.com/user-attachments/assets/ee9f8001-c4fc-41b9-84a5-8bf0b2da273e)
+
 2.7.4. Một vài nhận xét về hiệu suất
+
   ![image](https://github.com/user-attachments/assets/961c1e77-1b3d-46f3-9d3b-2ba0df2e5017)
+  
 •	Q-Learning cần rất nhiều lần thử (hàng ngàn episodes) để học chính sách tốt.
 •	Với 8-Puzzle, không gian trạng thái quá lớn (≈181,000 trạng thái hợp lệ), Q-table truyền thống không khả thi trừ khi rút gọn trạng thái hoặc dùng mô hình Deep Q-Network.
 •	Dù vậy, nó minh họa rõ cơ chế học từ trải nghiệm mà không cần biết trước môi trường.
