@@ -6,11 +6,11 @@ Mục tiêu của đồ án là:
 -	Tạo ra minh họa trực quan bằng ảnh động (GIF) để dễ dàng theo dõi quá trình hoạt động của từng thuật toán.
 Qua đó có cái nhìn toàn diện hơn về cách các thuật toán AI hoạt động trong thực tiễn và hiểu sâu hơn về ưu – nhược điểm của từng hướng tiếp cận.
 2. Nội dung:
-  2.1. Tổng quan về bài toán tìm kiếm và giải pháp
-  Bài toán 8-Puzzle là một trò chơi giải đố trên một bảng 3x3 với 8 ô được đánh số từ 1 đến 8 và một ô trống (ký hiệu là 0). Mục tiêu là di chuyển các ô sao cho đạt được trạng thái đích – thường là dãy số theo thứ tự từ trái sang phải, từ trên xuống dưới, với ô trống ở góc dưới bên phải:
-  1 2 3
-  4 5 6
-  7 8 0
+2.1. Tổng quan về bài toán tìm kiếm và giải pháp
+Bài toán 8-Puzzle là một trò chơi giải đố trên một bảng 3x3 với 8 ô được đánh số từ 1 đến 8 và một ô trống (ký hiệu là 0). Mục tiêu là di chuyển các ô sao cho đạt được trạng thái đích – thường là dãy số theo thứ tự từ trái sang phải, từ trên xuống dưới, với ô trống ở góc dưới bên phải:
+    1 2 3
+    4 5 6
+    7 8 0
 Đặc điểm của bài toán:
   •	Có không gian trạng thái lớn: có 9! = 362,880 cấu hình khác nhau, trong đó chỉ khoảng một nửa là giải được
   •	Là bài toán tổ hợp: chỉ cần thay đổi vị trí là trạng thái hoàn toàn khác nhau.
