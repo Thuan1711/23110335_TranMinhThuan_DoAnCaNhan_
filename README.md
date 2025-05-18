@@ -302,16 +302,27 @@ o	Trạng thái đích phải đạt được thông qua chuỗi các trạng th
 Mặc dù CSP không phải là cách tiếp cận phổ biến nhất cho 8-Puzzle, việc áp dụng các kỹ thuật CSP cho thấy khả năng sử dụng được nhiều mô hình giải quyết vấn đề khác nhau trong AI.
 
 2.6.2. Các thuật toán/kỹ thuật triển khai trong nhóm
+
 ● Backtracking
+
 •	Duyệt từng bước, thử gán giá trị cho từng biến.
+
 •	Nếu xảy ra xung đột, quay lui và thử giá trị khác.
+
 •	Là thuật toán nền tảng cho giải CSP nhưng tốc độ chậm nếu không có cải tiến.
+
 ● Forward Checking
+
 •	Là cải tiến của backtracking.
+
 •	Sau khi gán giá trị, loại bỏ các giá trị không hợp lệ trong miền của các biến liên quan.
+
 •	Giúp phát hiện mâu thuẫn sớm, tăng tốc quá trình tìm kiếm.
+
 2.6.3. Hình ảnh GIF minh họa hoạt động
+
 Các hình ảnh minh họa dưới đây thể hiện quá trình tìm lời giải dựa trên ràng buộc và kiểm tra trước:
+
 - Backtracking
   
   ![backtraking](https://github.com/user-attachments/assets/bc1569bf-7a62-4eeb-abd9-7fb4a780403f)
@@ -325,31 +336,57 @@ Các hình ảnh minh họa dưới đây thể hiện quá trình tìm lời gi
   ![image](https://github.com/user-attachments/assets/260d97df-746a-4bbf-abff-13a768648fd5)
   
 •	Backtracking có thể dùng như baseline để kiểm tra tính hợp lệ của trạng thái.
+
 •	Forward Checking hoạt động tốt hơn khi kết hợp với các heuristic chọn biến/thứ tự giá trị.
+
 2.7. Học tăng cường (Reinforcement Learning)
+
 2.7.1. Bài toán 8-Puzzle dưới góc độ Học tăng cường
+
 Học tăng cường (Reinforcement Learning – RL) là một phương pháp học mà agent (tác nhân) tự khám phá môi trường thông qua thử nghiệm và nhận thưởng/phạt từ hành động của mình. Mục tiêu là tìm chính sách (policy) tối ưu để tối đa hóa tổng phần thưởng theo thời gian.
+
 Trong bài toán 8-Puzzle:
+
 •	Agent là người chơi.
+
 •	Trạng thái là bảng 3x3 ở mỗi thời điểm.
+
 •	Hành động là di chuyển ô trống (0) lên/xuống/trái/phải.
+
 •	Phần thưởng: thường là −1 cho mỗi bước, 0 khi chưa xong, và +1000 khi đạt trạng thái đích.
+
 Bài toán trở thành một quá trình ra quyết định Markov (MDP), và ta có thể áp dụng thuật toán Q-Learning để học chính sách hành động tối ưu.
+
 2.7.2. Thuật toán triển khai trong nhóm
+
 ● Q-Learning
+
 •	Là thuật toán học tăng cường không cần mô hình (model-free).
+
 •	Sử dụng bảng Q-Table để ước lượng giá trị hành động tại mỗi trạng thái.
+
 •	Dần dần học được chiến lược tốt nhất thông qua nhiều episode thử nghiệm.
+
 •	Cập nhật Q-Value theo công thức:
+
 Q(s,a)←Q(s,a)+α⋅[r+γ⋅max⁡a′Q(s′,a′)−Q(s,a)]Q(s, a) \leftarrow Q(s, a) + \alpha \cdot [r + \gamma \cdot \max_{a'} Q(s', a') - Q(s, a)]Q(s,a)←Q(s,a)+α⋅[r+γ⋅a′maxQ(s′,a′)−Q(s,a)] 
+
 Trong đó:
+
 o	α\alphaα: learning rate
+
 o	γ\gammaγ: discount factor
+
 o	rrr: phần thưởng
+
 o	s,as, as,a: trạng thái và hành động hiện tại
+
 o	s′,a′s', a's′,a′: trạng thái và hành động tiếp theo
+
 2.7.3. Hình ảnh GIF hoạt động
+
 Hình ảnh bên dưới minh họa quá trình Q-Learning học dần cách giải bài toán 8-Puzzle qua nhiều lượt chơi:
+
 - Q_learning
   
 ![Q_learning](https://github.com/user-attachments/assets/ee9f8001-c4fc-41b9-84a5-8bf0b2da273e)
@@ -359,22 +396,39 @@ Hình ảnh bên dưới minh họa quá trình Q-Learning học dần cách gi�
   ![image](https://github.com/user-attachments/assets/961c1e77-1b3d-46f3-9d3b-2ba0df2e5017)
   
 •	Q-Learning cần rất nhiều lần thử (hàng ngàn episodes) để học chính sách tốt.
+
 •	Với 8-Puzzle, không gian trạng thái quá lớn (≈181,000 trạng thái hợp lệ), Q-table truyền thống không khả thi trừ khi rút gọn trạng thái hoặc dùng mô hình Deep Q-Network.
+
 •	Dù vậy, nó minh họa rõ cơ chế học từ trải nghiệm mà không cần biết trước môi trường.
+
 3. Kết luận
+
 Thông qua quá trình xây dựng và triển khai hệ thống giải bài toán 8-Puzzle đã đạt được nhiều mục tiêu cả về mặt lý thuyết lẫn thực hành:
+
 •	Triển khai thành công một loạt thuật toán tìm kiếm, từ cơ bản đến nâng cao, bao gồm:
+
 o	Tìm kiếm không có thông tin: BFS, DFS, UCS, IDDFS
+
 o	Tìm kiếm có thông tin: A*, Greedy, IDA*
+
 o	Tìm kiếm cục bộ: Hill Climbing, Simulated Annealing, Beam Search
+
 o	Tìm kiếm trong môi trường phức tạp: Conformant BFS với Belief State
+
 o	Giải bài toán ràng buộc (CSP): Backtracking, Forward Checking
+
 o	Học tăng cường (RL): Q-Learning
+
 •	Tạo ra một giao diện trực quan giúp người dùng tương tác dễ dàng: nhập trạng thái, chọn thuật toán, quan sát kết quả và theo dõi các bước giải dưới dạng ảnh động.
+
 •	Mở rộng góc nhìn về bài toán 8-Puzzle: không chỉ là bài toán tìm đường, mà còn có thể tiếp cận dưới dạng CSP, lập kế hoạch không xác định, hoặc quá trình học hỏi không giám sát.
+
  Một số điều rút ra khi làm đồ án:
+ 
 •	Không có một thuật toán "tốt nhất" cho mọi trường hợp – mỗi thuật toán phù hợp với hoàn cảnh và yêu cầu cụ thể.
+
 •	Các thuật toán heuristic như A* tỏ ra hiệu quả nhất về tốc độ và độ chính xác khi sử dụng heuristic phù hợp.
+
 •	Những thuật toán như Simulated Annealing hay Q-Learning có khả năng mở rộng cho các bài toán phức tạp hơn nhưng yêu cầu nhiều thời gian hoặc dữ liệu huấn luyện.
 
 
